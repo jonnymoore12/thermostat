@@ -6,7 +6,7 @@ Thermostat = function(){
   this.MEDIUM_ENERGY_LIMIT = 25;
 };
 
-Thermostat.prototype.getTemperature = function () {
+Thermostat.prototype.temperature = function () {
   return this.temperature;
 };
 
@@ -18,13 +18,13 @@ Thermostat.prototype.up = function () {
   if (this.temperature === this.MAX_TEMP) {
     throw new Error("It's gettin' hot in here!");
   } else {
-    this.temperature += 1;
+    return this.temperature += 1;
   };
 };
 
 Thermostat.prototype.down = function () {
   if (this.temperature > 10) {
-    this.temperature -= 1;
+    return this.temperature -= 1;
   } else {
     throw new Error("So cold, you CRAZY!!");
   };
