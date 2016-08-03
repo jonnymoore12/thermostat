@@ -9,7 +9,7 @@ Thermostat = function(){
   this.NON_PSM_MAX = 32;
 };
 
-Thermostat.prototype.temperature = function () {
+Thermostat.prototype.getTemperature = function () {
   return this.temperature;
 };
 
