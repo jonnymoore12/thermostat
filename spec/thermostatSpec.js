@@ -1,5 +1,3 @@
-
-
 describe('Thermostat', function(){
   var thermostat;
   // Thermostat starts at 20 degrees
@@ -60,4 +58,28 @@ describe('Thermostat', function(){
     thermostat.resetTemp();
     expect(thermostat.temperature).toEqual(20);
   });
+
+  // The thermostat should colour the display based on energy usage
+  // - < 18 is green, < 25 is yellow, otherwise red.
+  describe('Display Colour', function(){
+    it('shows GREEN when temperature < 18', function(){
+      for (i = 0; i < 3; i++) {
+        thermostat.down();
+      };
+      expect(thermostat.temperature).toEqual(17);
+      expect(thermostat.displayColour(thermostat.temperature)).toEqual("GREEN");
+    });
+    it('shows YELLOW when temperature equal to 18 and less than 25', function(){
+      expect(thermostat.temperature).toEqual(20);
+      expect(thermostat.displayColour(thermostat.temperature)).toEqual("YELLOW");
+    });
+    it('shows RED when temperature 25 or greater', function(){
+      for (i = 0; i < 5; i++) {
+        thermostat.up();
+      };
+        expect(thermostat.temperature).toEqual(25);
+        expect(thermostat.displayColour(thermostat.temperature)).toEqual("RED");
+    });
+  });
+
 });
