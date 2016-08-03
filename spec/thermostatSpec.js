@@ -27,27 +27,37 @@ describe('Thermostat', function(){
 
   // The minimum temperature is 10 degrees
   it('cannot drop below 10 degrees',function(){
-    var times = 10;
-    for(var i=0;
-      i < times;
-      i++) {
+    for (i = 0; i < 10; i++) {
         thermostat.down();
       };
     expect(thermostat.down).toThrow(new Error("So cold, you CRAZY!!"));
   });
 
   // If power saving mode is on, the maximum temperature is 25 degrees
-  it('starts with safe mode turned off', function(){
-    expect(thermostat.isPowerSavingOn()).toEqual(false);
+  it('starts with safe mode turned on', function(){
+    expect(thermostat.isPowerSavingOn()).toEqual(true);
   });
-  it('maximum temperatures is 25 degrees when safe mode is on', function(){
-    thermostat.powerModeSwitch();
-    var times = 5;
-    for(var i=0;
-      i < times;
-      i++) {
+  it('maximum temperature is 25 degrees when safe mode is on', function(){
+    for (i = 0; i < 5; i++) {
         thermostat.up();
       };
       expect(thermostat.up).toThrow(new Error("It's gettin' hot in here!"));
+  });
+
+  it('maximum temperature is 32 degrees when safe mode is off', function() {
+    thermostat.powerModeSwitch();
+    for (i = 0; i < 12; i++) {
+        thermostat.up();
+      };
+      expect(thermostat.up).toThrow(new Error("It's gettin' hot in here!"));
+  });
+
+  it('can reset the temperature to 20', function(){
+    for (i = 0; i < 5; i++) {
+        thermostat.up();
+      };
+    expect(thermostat.temperature).toEqual(25);
+    thermostat.resetTemp();
+    expect(thermostat.temperature).toEqual(20);
   });
 });

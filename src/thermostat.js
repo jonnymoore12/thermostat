@@ -1,6 +1,7 @@
 Thermostat = function(){
   this.temperature = 20;
-  this.powerSaving = false;
+  this.powerSaving = true;
+  this.MAX_TEMP = 25;
 };
 
 Thermostat.prototype.temperature = function () {
@@ -12,10 +13,10 @@ Thermostat.prototype.isPowerSavingOn = function () {
 };
 
 Thermostat.prototype.up = function () {
-  if ((this.isPowerSavingOn) && (this.temperature === 25)) {
+  if (this.temperature === this.MAX_TEMP) {
     throw new Error("It's gettin' hot in here!");
   } else {
-  return this.temperature += 1
+    return this.temperature += 1
   };
 };
 
@@ -30,9 +31,15 @@ Thermostat.prototype.down = function () {
 Thermostat.prototype.powerModeSwitch = function () {
   if (this.isPowerSavingOn()) {
     this.powerSaving = false;
+    this.MAX_TEMP = 32
   } else {
     this.powerSaving = true;
+    this.MAX_TEMP = 25
   };
+};
+
+Thermostat.prototype.resetTemp = function () {
+  this.temperature = 20
 };
 
   // Thermostat.prototype.down = function () {
