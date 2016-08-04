@@ -81,18 +81,18 @@ describe('Thermostat', function(){
         thermostat.down();
       };
       expect(thermostat.temperature).toEqual(17);
-      expect(thermostat.displayColour(thermostat.temperature)).toEqual("GREEN");
+      expect(thermostat.getDisplayColour(thermostat.temperature)).toEqual("GREEN");
     });
     it('shows YELLOW when temperature equal to 18 and less than 25', function(){
       expect(thermostat.temperature).toEqual(20);
-      expect(thermostat.displayColour(thermostat.temperature)).toEqual("YELLOW");
+      expect(thermostat.getDisplayColour(thermostat.temperature)).toEqual("YELLOW");
     });
     it('shows RED when temperature 25 or greater', function(){
       for (i = 0; i < 5; i++) {
         thermostat.up();
       };
         expect(thermostat.temperature).toEqual(25);
-        expect(thermostat.displayColour(thermostat.temperature)).toEqual("RED");
+        expect(thermostat.getDisplayColour(thermostat.temperature)).toEqual("RED");
     });
   });
 });

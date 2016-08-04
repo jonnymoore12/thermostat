@@ -47,7 +47,7 @@ Thermostat.prototype.resetTemp = function () {
   this.temperature = 20;
 };
 
-Thermostat.prototype.displayColour = function (temperature) {
+Thermostat.prototype.getDisplayColour = function (temperature) {
   if (temperature < this.LOW_ENERGY_LIMIT) {
     return "GREEN";
   } else if (temperature < this.MEDIUM_ENERGY_LIMIT) {
