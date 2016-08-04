@@ -47,4 +47,12 @@ $(document).ready(function(){
     });
   });
 
+  $.ajax({
+    url: "http://api.wunderground.com/api/fb3946a1b0abcf37/conditions/q/UK/London.json",
+    dataType: 'json',
+    success: function(data){
+      alert( "The curret temperature in Londin is: " + data.current_observation.temp_c );
+    }
+  });
+
 });
