@@ -1,3 +1,5 @@
+'use-strict';
+
 Thermostat = function(){
   this.temperature = 20;
   this.powerSaving = true;
@@ -40,6 +42,9 @@ Thermostat.prototype.powerModeSwitch = function () {
   } else {
     this.powerSaving = true;
     this.MAX_TEMP = this.PSM_MAX;
+    if (this.getTemperature() > this.MAX_TEMP) {
+      this.temperature = this.MAX_TEMP;
+    }
   };
 };
 

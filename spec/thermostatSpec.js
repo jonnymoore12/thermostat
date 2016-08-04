@@ -1,3 +1,5 @@
+'use-strict';
+
 describe('Thermostat', function(){
   var thermostat;
   // Thermostat starts at 20 degrees
