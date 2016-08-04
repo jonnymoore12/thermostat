@@ -1,8 +1,7 @@
+var thermostat = new Thermostat();
+
 $(document).ready(function(){
-  var thermostat = new Thermostat();
-  $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6f09caafd75b95cff331a0a37350405&units=metric', function(data) {
-    $('#getTemperature').text(data.main.temp);
-  });
+  displayWeather('London');
 
   $( "#up" ).click(function(){
     thermostat.up();
@@ -26,7 +25,10 @@ $(document).ready(function(){
       } else {
        return "off";
     }});
+    updateTemperature();
   });
+
+});
 
   function updateTemperature(){
     $('#getTemperature').text(thermostat.getTemperature());
@@ -38,8 +40,6 @@ $(document).ready(function(){
       $('#getTemperature').css('color', 'red')
     }
   }
-
-  displayWeather('London');
 
   $('#select-city').submit(function(event){
     event.preventDefault();
@@ -56,8 +56,6 @@ $(document).ready(function(){
     })
   };
 
-});
-
 
 
 
@@ -71,20 +69,4 @@ $(document).ready(function(){
   //     return "red";
   //     };
   //   });
-  // });
-
-
-
-
-
-
-
-
-
-  // $.ajax({
-  //   url: "http://api.wunderground.com/api/7c62def172936516/conditions/q/UK/London.json",
-  //   dataType: 'json',
-  //   success: function(data){
-  //     alert( "The current temperature in London is: " + data.current_observation.temp_c );
-  //   }
   // });
