@@ -19,7 +19,7 @@ Thermostat.prototype.isPowerSavingOn = function () {
 
 Thermostat.prototype.up = function () {
   if (this.temperature === this.MAX_TEMP) {
-    throw new Error("It's gettin' hot in here!");
+    return;
   } else {
     return this.temperature += 1;
   };
@@ -27,7 +27,7 @@ Thermostat.prototype.up = function () {
 
 Thermostat.prototype.down = function () {
   if (this.temperature === this.MIN_TEMP) {
-    throw new Error("So cold, you CRAZY!!");
+    return;
   } else {
     return this.temperature -= 1;
   };
@@ -47,12 +47,12 @@ Thermostat.prototype.resetTemp = function () {
   this.temperature = 20;
 };
 
-Thermostat.prototype.getDisplayColour = function (temperature) {
+Thermostat.prototype.getEnergyLevel = function (temperature) {
   if (temperature < this.LOW_ENERGY_LIMIT) {
-    return "GREEN";
+    return "Low-Energy";
   } else if (temperature < this.MEDIUM_ENERGY_LIMIT) {
-    return ("YELLOW");
+    return "Medium-Energy";
   } else {
-    return "RED";
+    return "High-Energy";
   };
 };

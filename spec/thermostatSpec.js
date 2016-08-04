@@ -25,10 +25,10 @@ describe('Thermostat', function(){
 
   // The minimum temperature is 10 degrees
   it('cannot drop below 10 degrees',function(){
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 11; i++) {
         thermostat.down();
       };
-    expect(thermostat.down).toThrow(new Error("So cold, you CRAZY!!"));
+    expect(thermostat.getTemperature()).toEqual(10);
   });
 
   it('can reset the temperature to 20', function(){
@@ -46,10 +46,10 @@ describe('Thermostat', function(){
 
   describe('When Power Saving Mode is on', function(){
     it('maximum temperature is 25 degrees', function(){
-      for (i = 0; i < 5; i++) {
+      for (i = 0; i < 6; i++) {
           thermostat.up();
         };
-        expect(thermostat.up).toThrow(new Error("It's gettin' hot in here!"));
+        expect(thermostat.getTemperature()).toEqual(25);
     });
     it('Power Saving Mode can be turned off', function(){
       thermostat.powerModeSwitch();
@@ -62,10 +62,10 @@ describe('Thermostat', function(){
       thermostat.powerModeSwitch();
     });
     it('maximum temperature is 32 degrees', function() {
-      for (i = 0; i < 12; i++) {
+      for (i = 0; i < 13; i++) {
           thermostat.up();
         };
-        expect(thermostat.up).toThrow(new Error("It's gettin' hot in here!"));
+        expect(thermostat.getTemperature()).toEqual(32);
     });
     it('Power Saving Mode can be turned back on', function(){
       thermostat.powerModeSwitch();
@@ -81,18 +81,18 @@ describe('Thermostat', function(){
         thermostat.down();
       };
       expect(thermostat.temperature).toEqual(17);
-      expect(thermostat.getDisplayColour(thermostat.temperature)).toEqual("GREEN");
+      expect(thermostat.getEnergyLevel(thermostat.temperature)).toEqual("Low-Energy");
     });
     it('shows YELLOW when temperature equal to 18 and less than 25', function(){
       expect(thermostat.temperature).toEqual(20);
-      expect(thermostat.getDisplayColour(thermostat.temperature)).toEqual("YELLOW");
+      expect(thermostat.getEnergyLevel(thermostat.temperature)).toEqual("Medium-Energy");
     });
     it('shows RED when temperature 25 or greater', function(){
       for (i = 0; i < 5; i++) {
         thermostat.up();
       };
         expect(thermostat.temperature).toEqual(25);
-        expect(thermostat.getDisplayColour(thermostat.temperature)).toEqual("RED");
+        expect(thermostat.getEnergyLevel(thermostat.temperature)).toEqual("High-Energy");
     });
   });
 });
