@@ -52,7 +52,7 @@ $(document).ready(function(){
     var token = '&appid=b6f09caafd75b95cff331a0a37350405';
     var units = '&units=metric';
     $.get(url + token + units, function(data) {
-      $('#getTemperature').text(data.main.temp);
+      $('#getTemperature').text(Math.round(data.main.temp));
     })
   };
 
