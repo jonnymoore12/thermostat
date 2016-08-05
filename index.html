@@ -3,18 +3,35 @@
 
   <head>
     <style>
-      body {font-family:"Arial Black", "Arial"; font-size:9pt;}
+      body {font-family:"Arial Black", "Arial"; font-size:9pt; color:#aeaeae}
       button {
         background: transparent;
         margin: 0px 0px 0px 5px;
         padding: 0px;
         border: none !important;
+        font-weight:bold;
+        font-family:"Arial Black";
       }
       input {
         background: transparent;
         margin: 0px;
         padding: 0px;
         border: none !important;
+        font-family:"Arial Black";
+      }
+      .vertical{
+        writing-mode:tb-rl;
+        -webkit-transform:rotate(0deg);
+        -moz-transform:rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform:rotate(0deg);
+        transform: rotate(0deg);
+        white-space:nowrap;
+        display:block;
+        bottom:0;
+        width:20px;
+        height:20px;
+        vertical-align:center;
       }
     </style>
 
@@ -22,54 +39,67 @@
     <title>Thermostat</title>
   </head>
   <body>
-    <table border="1" width="100%">
-      <tr>
-        <td width="65%">
-          <table border="1" width="100%">
-            <tr>
-              <td align="right" colspan="2">
-                <span id="getTemperature" style="color:#f0bd20; font-size:60pt;"> <span>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" align="right">
-                <span> local temperature </span>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" align="right">
-                <form id="select-city">
-                  <input id="current-city" type="text" placeholder="Enter a city"></input>
-                  <input type="submit" value="submit" style="background-color: transparent; border: none"></input>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td width="90%">
-              </td>
-              <td align="right">
-                <button id="up" width="10%"> + </button>
-                <button id="down" width="10%"> - </button>
-                <button id="resetTemp" width="10%"> reset </button><br />
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" align="right">
-                power saving mode <span id="isPowerSavingOn"> on </span>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" align="right">
-                <button id="powerModeSwitch"> toggle power mode </button>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <a href="http://tinypic.com?ref=2po5h05" target="_blank"><img src="http://i65.tinypic.com/2po5h05.png" border="0" alt="Image and video hosting by TinyPic" height = 100px></a>
-        </td>
-      </tr>
-    </table>
+    <div style="border: solid 3px black;">
+      <table border="0" width="100%">
+        <tr>
+          <td width="65%">
+            <table border="0" width="100%">
+              <tr>
+                <td align="right" colspan="2">
+                  <span id="getTemperature" style="color:#f0bd20; font-size:60pt;"> <span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="right">
+                  <span> local temperature </span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="right">
+                  <form id="select-city">
+                    <input id="current-city" type="text" placeholder="Enter a city"></input>
+                    <input type="submit" value="submit" style="background-color: transparent; border: none"></input>
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                <td width="90%">
+                </td>
+                <td align="right">
+                  <button id="up" width="10%"> + </button>
+                  <button id="down" width="10%"> - </button>
+                  <button id="resetTemp" width="10%"> reset </button><br />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="right">
+                  power saving mode <span id="isPowerSavingOn"> <span style="color:black;">on</span> </span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="right">
+                  <button id="powerModeSwitch"> toggle power mode </button>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td style="background-color:black">
+            <table border="0" height="100%" width="100%">
+              <tr>
+                <td width="5%">
+                  <h1 class="vertical" style="font-size:38pt; color:white; margin-top:-110px; margin-left:41px;">degrees</h1>
+                </td>
+                <td>
+                  <a href="http://tinypic.com?ref=2po5h05" target="_blank">
+                    <img src="http://i65.tinypic.com/2po5h05.png" border="0" alt="Image and video hosting by TinyPic" height = 100px></a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
 
 
 
