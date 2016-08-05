@@ -33,9 +33,9 @@ $(document).ready(function(){
   function updateTemperature(){
     $('#getTemperature').text(thermostat.getTemperature());
     if(thermostat.getEnergyLevel(thermostat.getTemperature()) === 'Low-Energy') {
-      $('#getTemperature').css('color', 'green')
+      $('#getTemperature').css('color', '#1feb24')
     } else if(thermostat.getEnergyLevel(thermostat.getTemperature()) === 'Medium-Energy') {
-      $('#getTemperature').css('color', 'yellow')
+      $('#getTemperature').css('color', '#f0bd20')
     } else {
       $('#getTemperature').css('color', 'red')
     }
