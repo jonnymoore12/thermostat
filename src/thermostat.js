@@ -1,9 +1,14 @@
+'use-strict';
+
 Thermostat = function(){
   this.temperature = 20;
   this.powerSaving = true;
+  this.MIN_TEMP = 10;
   this.MAX_TEMP = 25;
   this.LOW_ENERGY_LIMIT = 18;
   this.MEDIUM_ENERGY_LIMIT = 25;
+  this.PSM_MAX = 25;
+  this.NON_PSM_MAX = 32;
 };
 
 Thermostat.prototype.getTemperature = function () {
@@ -16,27 +21,30 @@ Thermostat.prototype.isPowerSavingOn = function () {
 
 Thermostat.prototype.up = function () {
   if (this.temperature === this.MAX_TEMP) {
-    throw new Error("It's gettin' hot in here!");
+    return;
   } else {
-    this.temperature += 1;
+    return this.temperature += 1;
   };
 };
 
 Thermostat.prototype.down = function () {
-  if (this.temperature > 10) {
-    this.temperature -= 1;
+  if (this.temperature === this.MIN_TEMP) {
+    return;
   } else {
-    throw new Error("So cold, you CRAZY!!");
+    return this.temperature -= 1;
   };
 };
 
 Thermostat.prototype.powerModeSwitch = function () {
   if (this.isPowerSavingOn()) {
     this.powerSaving = false;
-    this.MAX_TEMP = 32;
+    this.MAX_TEMP = this.NON_PSM_MAX;
   } else {
     this.powerSaving = true;
-    this.MAX_TEMP = 25;
+    this.MAX_TEMP = this.PSM_MAX;
+    if (this.getTemperature() > this.MAX_TEMP) {
+      this.temperature = this.MAX_TEMP;
+    }
   };
 };
 
@@ -44,20 +52,12 @@ Thermostat.prototype.resetTemp = function () {
   this.temperature = 20;
 };
 
-Thermostat.prototype.displayColour = function (temperature) {
+Thermostat.prototype.getEnergyLevel = function (temperature) {
   if (temperature < this.LOW_ENERGY_LIMIT) {
-    return "GREEN";
+    return "Low-Energy";
   } else if (temperature < this.MEDIUM_ENERGY_LIMIT) {
-    return ("YELLOW");
+    return "Medium-Energy";
   } else {
-    return "RED";
+    return "High-Energy";
   };
 };
-
-  // Thermostat.prototype.down = function () {
-  //   if (this.temperature === 10) {
-  //     throw new Error("So cold, you CRAZY!!");
-  //   }
-  //   return this.temperature -= 1
-  //   };
-  //
