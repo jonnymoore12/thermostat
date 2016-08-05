@@ -53,13 +53,6 @@ $(document).ready(function(){
     var units = '&units=metric';
     $.get(url + token + units, function(data) {
       $('#getTemperature').text(Math.round(data.main.temp));
-      if(thermostat.getEnergyLevel(thermostat.getTemperature()) === 'Low-Energy') {
-        $('#getTemperature').css('color', 'green')
-      } else if(thermostat.getEnergyLevel(thermostat.getTemperature()) === 'Medium-Energy') {
-        $('#getTemperature').css('color', 'yellow')
-      } else {
-        $('#getTemperature').css('color', 'red')
-      }
     })
 
   };
