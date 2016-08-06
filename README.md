@@ -3,7 +3,7 @@
 
 Run index.html and interact with thermostat in your browser (temperature is given in degrees Celsius).
 
-[Screenshot](http://i.imgur.com/uSSdyqj.png)
+[Screenshot](http://i.imgur.com/AOPmhX3.png)
 
 #### Interaction
  - Press "+" or "-" to increase or decrease temperature by one degree.
