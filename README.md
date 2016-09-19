@@ -1,9 +1,10 @@
 # Thermostat
-=====================
 
-Run index.html and interact with thermostat in your browser (temperature is given in degrees Celsius).
+#### Instructions
+ - Run index.html and interact with thermostat in your browser (temperature is given in degrees Celsius).
+ - Run SpecRunner.html for test feedback.
 
-[Screenshot](http://i.imgur.com/AOPmhX3.png)
+<img width="971" alt="thermostat" src="https://cloud.githubusercontent.com/assets/18581870/18635295/71a4daae-7e7c-11e6-9b9c-6d02e893f73e.png">
 
 #### Interaction
  - Press "+" or "-" to increase or decrease temperature by one degree.
